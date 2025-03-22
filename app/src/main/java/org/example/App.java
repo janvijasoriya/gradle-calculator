@@ -11,7 +11,6 @@ public class App {
             double num1 = Double.parseDouble(args[0]);
             double num2 = Double.parseDouble(args[1]);
             String operation = args[2].toLowerCase();
-
             double result;
             switch (operation) {
                 case "add":
