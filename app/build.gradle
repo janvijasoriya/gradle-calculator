@@ -1,0 +1,31 @@
+apply plugin: 'application'
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+}
+
+application {
+    mainClass = 'org.example.App'
+}
+
+// Custom task to run the calculator with parameters
+task calcTask(type: JavaExec) {
+    group = 'Calculator'
+    description = 'Runs the calculator with user-provided numbers and operation'
+    mainClass = 'org.example.App'
+    classpath = sourceSets.main.runtimeClasspath
+    if (project.hasProperty('num1') && project.hasProperty('num2') && project.hasProperty('operation')) {
+        args = [project.property('num1'), project.property('num2'), project.property('operation')]
+    } else {
+        doFirst {
+            throw new GradleException('Please provide num1, num2, and operation as properties, e.g., -Pnum1=10 -Pnum2=5 -Poperation=add')
+        }
+    }
+}
