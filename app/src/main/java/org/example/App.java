@@ -7,7 +7,6 @@ public class App {
             System.out.println("Operation: add, subtract, multiply, divide");
             return;
         }
-
         try {
             double num1 = Double.parseDouble(args[0]);
             double num2 = Double.parseDouble(args[1]);
