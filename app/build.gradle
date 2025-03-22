@@ -29,3 +29,16 @@ task calcTask(type: JavaExec) {
         }
     }
 }
+
+
+plugins {
+    id 'org.sonarqube' version '4.4.1.3373'
+}
+
+sonarqube {
+    properties {
+        property 'sonar.host.url', 'http://localhost:9000'
+        property 'sonar.projectKey', 'gradle-calculator'
+        property 'sonar.projectName', 'Gradle Calculator'
+    }
+}
