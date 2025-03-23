@@ -11,7 +11,7 @@ public class App {
             double num1 = Double.parseDouble(args[0]);
             double num2 = Double.parseDouble(args[1]);
             String operation = args[2].toLowerCase();
-            double result = calculate(num1, num2, operation);  // Use the new method
+            double result = calculate(num1, num2, operation);
             if (Double.isNaN(result)) {
                 if (num2 == 0 && operation.equals("divide")) {
                     System.out.println("Error: Division by zero!");
@@ -28,17 +28,11 @@ public class App {
 
     public static double calculate(double num1, double num2, String operation) {
         switch (operation.toLowerCase()) {
-            case "add":
-                return num1 + num2;
-            case "subtract":
-                return num1 - num2;
-            case "multiply":
-                return num1 * num2;
-            case "divide":
-                if (num2 == 0) return Double.NaN;  // Division by zero
-                return num1 / num2;
-            default:
-                return Double.NaN;  // Invalid operation
+            case "add": return num1 + num2;
+            case "subtract": return num1 - num2;
+            case "multiply": return num1 * num2;
+            case "divide": if (num2 == 0) return Double.NaN; return num1 / num2;
+            default: return Double.NaN;
         }
     }
 
