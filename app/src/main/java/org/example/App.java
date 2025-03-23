@@ -11,9 +11,13 @@ public class App {
             double num1 = Double.parseDouble(args[0]);
             double num2 = Double.parseDouble(args[1]);
             String operation = args[2].toLowerCase();
-            double result = calculate(num1, num2, operation);  // Call the new method
+            double result = calculate(num1, num2, operation);  // Use the new method
             if (Double.isNaN(result)) {
-                System.out.println("Error: Division by zero or invalid operation!");
+                if (num2 == 0 && operation.equals("divide")) {
+                    System.out.println("Error: Division by zero!");
+                } else {
+                    System.out.println("Invalid operation! Use: add, subtract, multiply, divide");
+                }
             } else {
                 System.out.println(num1 + " " + getOperatorSymbol(operation) + " " + num2 + " = " + result);
             }
@@ -22,7 +26,6 @@ public class App {
         }
     }
 
-    // New method for testing
     public static double calculate(double num1, double num2, String operation) {
         switch (operation.toLowerCase()) {
             case "add":
@@ -32,14 +35,13 @@ public class App {
             case "multiply":
                 return num1 * num2;
             case "divide":
-                if (num2 == 0) return Double.NaN;  // Return NaN for division by zero
+                if (num2 == 0) return Double.NaN;  // Division by zero
                 return num1 / num2;
             default:
-                return Double.NaN;  // Return NaN for invalid operation
+                return Double.NaN;  // Invalid operation
         }
     }
 
-    // Helper method for nicer output
     private static String getOperatorSymbol(String operation) {
         switch (operation.toLowerCase()) {
             case "add": return "+";
