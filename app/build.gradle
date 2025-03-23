@@ -1,4 +1,7 @@
-apply plugin: 'application'
+plugins {
+    id 'application'                    
+    id 'org.sonarqube' version '4.4.1.3373'
+}
 
 group = 'org.example'
 version = '1.0-SNAPSHOT'
@@ -15,7 +18,6 @@ application {
     mainClass = 'org.example.App'
 }
 
-// Custom task to run the calculator with parameters
 task calcTask(type: JavaExec) {
     group = 'Calculator'
     description = 'Runs the calculator with user-provided numbers and operation'
@@ -28,11 +30,6 @@ task calcTask(type: JavaExec) {
             throw new GradleException('Please provide num1, num2, and operation as properties, e.g., -Pnum1=10 -Pnum2=5 -Poperation=add')
         }
     }
-}
-
-
-plugins {
-    id 'org.sonarqube' version '4.4.1.3373'
 }
 
 sonarqube {
